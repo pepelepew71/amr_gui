@@ -3,7 +3,6 @@
 from __future__ import print_function
 
 import os
-import random
 
 import Tkinter as tk
 import ttk
@@ -74,7 +73,9 @@ class LabelFrameCarB(tk.LabelFrame, object):
     def _setup_headline(self):
         tk.Label(master=self, text="Name").grid(row=0, column=0, padx=2)
         tk.Label(master=self, text="State").grid(row=0, column=1, columnspan=4)
-        tk.Label(master=self, text="Location").grid(row=0, column=6, columnspan=3)
+        tk.Label(master=self, text="x").grid(row=0, column=6)
+        tk.Label(master=self, text="y").grid(row=0, column=7)
+        tk.Label(master=self, text="rz").grid(row=0, column=8)
 
     def _setup_cars(self):
         self.cars = dict()
@@ -128,7 +129,6 @@ class CarB():
         self.coord_ents = dict()
         for i, coord in enumerate(self.coords, start=6):
             self.coord_ents[coord] = tk.Entry(master=self.parent, width=5, justify='right', state=tk.NORMAL, bg=COLOR_GRAY)
-            self.coord_ents[coord].insert(0, "{:4.2f}".format(random.uniform(0.0, 29.99)))
             self.coord_ents[coord].grid(row=self.row, column=i)
 
 
@@ -174,7 +174,9 @@ class FrameMonitor(tk.Frame, object):
 
     def _setup_widgets(self):
         tk.Label(master=self, text="State").grid(row=0, column=0, columnspan=3)
-        tk.Label(master=self, text="Location").grid(row=0, column=4, columnspan=3)
+        tk.Label(master=self, text="x").grid(row=0, column=4)
+        tk.Label(master=self, text="y").grid(row=0, column=5)
+        tk.Label(master=self, text="rz").grid(row=0, column=6)
         tk.Label(master=self, text="Progress").grid(row=0, column=8)
         self._setup_state_rbs()
         self._setup_state_chb()
@@ -198,7 +200,6 @@ class FrameMonitor(tk.Frame, object):
         self.coord_ents = dict()
         for i, coord in enumerate(self.coords, start=4):
             self.coord_ents[coord] = tk.Entry(master=self, width=5, justify='right', state=tk.NORMAL, bg=COLOR_GRAY)
-            self.coord_ents[coord].insert(0, "{:4.2f}".format(random.uniform(0.0, 29.99)))
             self.coord_ents[coord].grid(row=1, column=i)
 
     def _setup_progress(self):
